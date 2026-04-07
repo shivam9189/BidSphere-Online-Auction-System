@@ -1,0 +1,63 @@
+services:
+  - type: web
+    name: bidsphere-backend
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGO_URI
+        fromDatabase:
+          name: bidsphere-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRY
+        value: 7d
+      - key: ADMIN_EMAIL
+        value: parvaraval27@gmail.com
+      - key: ADMIN_PASSWORD
+        value: Admin@123
+      - key: ADMIN_IP
+        value: ::1
+      - key: SMTP_USER
+        value: bidsphere.auction@gmail.com
+      - key: SMTP_HOST
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: 587
+      - key: SMTP_PASS
+        value: pvsagnpnroxgfivf
+      - key: SHIPROCKET_EMAIL
+        value: thebumfuzzleshow@gmail.com
+      - key: SHIPROCKET_PASSWORD
+        value: HgL@fllv%mn5P5sM
+      - key: CLIENT_ORIGIN
+        value: https://bid-sphere-online-auction-system.vercel.app
+      - key: EMAIL_USER
+        value: bidsphere.auction@gmail.com
+      - key: EMAIL_PASS
+        value: pvsagnpnroxgfivf
+      - key: CLOUDINARY_URL
+        value: cloudinary://226583656819542:vquostK-LgANBg3uk9cxtDYO9Hw@df0spusrz
+      - key: CLOUDINARY_CLOUD_NAME
+        value: df0spusrz
+      - key: CLOUDINARY_API_KEY
+        value: 226583656819542
+      - key: CLOUDINARY_API_SECRET
+        value: vquostK-LgANBg3uk9cxtDYO9Hw
+      - key: NODE_VERSION
+        value: 20
+      - key: AUCTION_STATUS_UPDATER_CRON
+        value: "*/1 * * * *"
+
+databases:
+  - name: bidsphere-db
+    databaseName: BidSphere
+    user: bidsphere_user
