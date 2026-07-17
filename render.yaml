@@ -37,7 +37,7 @@ services:
       - key: SHIPROCKET_PASSWORD
         value: ""
       - key: CLIENT_ORIGIN
-        value: https://bid-sphere-online-auction-system.vercel.app
+        value: https://bidsphere-online-auction-system.vercel.app
       - key: EMAIL_USER
         value: shivampatel9189@gmail.com
       - key: EMAIL_PASS
